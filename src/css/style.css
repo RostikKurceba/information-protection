@@ -1,0 +1,313 @@
+
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #e8edf7;
+  background: #0b1020;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --surface: #141b2e;
+  --surface-light: #1b2540;
+  --border: #2a3550;
+  --muted: #9ba8c2;
+  --accent: #7c9cff;
+  --accent-hover: #9bb2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select,
+.file-label {
+  cursor: pointer;
+}
+
+.container {
+  width: min(100% - 40px, 960px);
+  margin: 0 auto;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  background: #0e1527;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  gap: 20px;
+}
+
+.logo {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 750;
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.header-label,
+.field-hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.main-content {
+  padding-top: 52px;
+  padding-bottom: 64px;
+}
+
+.intro {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  margin: 12px 0;
+  font-size: clamp(30px, 5vw, 42px);
+  letter-spacing: -1.5px;
+}
+
+.intro-description {
+  max-width: 620px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.workspace {
+  display: grid;
+  gap: 24px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 20px 60px #00000020;
+}
+
+.field-group {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.field-group > label,
+.result-heading > label {
+  font-size: 14px;
+  font-weight: 650;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: #0d1425;
+  color: #e8edf7;
+}
+
+input,
+select {
+  min-height: 46px;
+  padding: 0 14px;
+}
+
+textarea {
+  min-height: 150px;
+  padding: 14px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px #7c9cff20;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: #6e7b96;
+}
+
+.field-hint {
+  margin: 0;
+}
+
+.field-actions,
+.result-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.file-label,
+.text-button {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.file-label:hover,
+.text-button:hover {
+  color: var(--accent-hover);
+}
+
+.file-label {
+  text-align: right;
+}
+
+.text-button {
+  border: 0;
+  background: transparent;
+  padding: 4px 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 650;
+  transition: background 0.15s ease;
+}
+
+.button-primary {
+  flex: 1;
+  background: var(--accent);
+  color: #0b1020;
+}
+
+.button-primary:hover {
+  background: var(--accent-hover);
+}
+
+.button-secondary {
+  flex: 1;
+  border-color: var(--border);
+  background: var(--surface-light);
+  color: #e8edf7;
+}
+
+.button-secondary:hover {
+  background: #263252;
+}
+
+.message {
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.error-message {
+  border: 1px solid #743d52;
+  background: #351d2b;
+  color: #ffb5c5;
+}
+
+.info-section {
+  margin-top: 48px;
+}
+
+.info-section h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.algorithm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.algorithm-card {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.algorithm-card h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.algorithm-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer .container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: min(100% - 24px, 960px);
+  }
+
+  .main-content {
+    padding-top: 32px;
+  }
+
+  .workspace {
+    padding: 18px;
+  }
+
+  .algorithm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .header-label {
+    text-align: right;
+  }
+}

@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Вебзастосунок для шифрування та розшифрування тексту різними алгоритмами."
+  >
+  <title>CipherLab | Шифрування тексту</title>
+  <link rel="stylesheet" href="./src/css/style.css">
+  <script type="module" src="./src/js/main.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <a class="logo" href="#">Cipher<span>Lab</span></a>
+      <span class="header-label">Лабораторна робота №1</span>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="intro">
+      <p class="eyebrow">ПРОГРАМНІ ТЕХНОЛОГІЇ ЗАХИСТУ ІНФОРМАЦІЇ</p>
+      <h1>Шифрування тексту</h1>
+      <p class="intro-description">
+        Інструмент для шифрування та розшифрування повідомлень
+        за допомогою класичних алгоритмів криптографії.
+      </p>
+    </section>
+
+    <section class="workspace">
+      <div class="field-group">
+        <label for="algorithm">Алгоритм шифрування</label>
+        <select id="algorithm">
+          <option value="substitution">Шифр заміни</option>
+          <option value="vigenere">Шифр Віженера</option>
+          <option value="block">Блочна перестановка</option>
+          <option value="vertical">Вертикальна перестановка</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label for="key">Ключ шифрування</label>
+        <input
+          id="key"
+          type="text"
+          placeholder="Наприклад, КЛЮЧ"
+          autocomplete="off"
+        >
+        <p id="key-hint" class="field-hint">
+          Введіть ключ з українських літер.
+        </p>
+      </div>
+
+      <div class="field-group">
+        <label for="input-text">Вхідний текст</label>
+        <textarea
+          id="input-text"
+          rows="7"
+          placeholder="Введіть текст або завантажте файл..."
+        ></textarea>
+        <div class="field-actions">
+          <span id="input-count" class="field-hint">0 символів</span>
+          <label class="file-label" for="file-input">Завантажити файл</label>
+          <input id="file-input" type="file" accept=".txt,text/plain" hidden>
+        </div>
+      </div>
+
+      <div id="error-message" class="message error-message" role="alert" hidden></div>
+
+      <div class="action-buttons">
+        <button id="encrypt-button" class="button button-primary" type="button">
+          Зашифрувати
+        </button>
+        <button id="decrypt-button" class="button button-secondary" type="button">
+          Розшифрувати
+        </button>
+      </div>
+
+      <div class="field-group result-group">
+        <div class="result-heading">
+          <label for="output-text">Результат</label>
+          <button id="copy-button" class="text-button" type="button">
+            Копіювати
+          </button>
+        </div>
+        <textarea
+          id="output-text"
+          rows="7"
+          placeholder="Тут з'явиться результат..."
+          readonly
+        ></textarea>
+        <div class="field-actions">
+          <span id="output-count" class="field-hint">0 символів</span>
+          <button id="download-button" class="text-button" type="button">
+            Завантажити результат
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>Про алгоритми</h2>
+      <div class="algorithm-grid">
+        <article class="algorithm-card">
+          <h3>Шифр заміни</h3>
+          <p>Замінює кожну літеру відповідною літерою алфавіту, сформованого на основі ключа.</p>
+        </article>
+        <article class="algorithm-card">
+          <h3>Шифр Віженера</h3>
+          <p>Використовує ключ для циклічного зсуву літер відкритого тексту.</p>
+        </article>
+        <article class="algorithm-card">
+          <h3>Блочна перестановка</h3>
+          <p>Переставляє символи в блоках відповідно до заданого порядку позицій.</p>
+        </article>
+        <article class="algorithm-card">
+          <h3>Вертикальна перестановка</h3>
+          <p>Записує текст у таблицю та зчитує символи за стовпцями в порядку ключа.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>CipherLab · Навчальний проєкт</p>
+    </div>
+  </footer>
+</body>
+</html>
