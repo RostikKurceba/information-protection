@@ -1,0 +1,14 @@
+
+{
+  "name": "polybius-gronsfeld-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "vite": "^6.4.0"
+  }
+}

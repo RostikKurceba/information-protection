@@ -1,0 +1,223 @@
+```html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Навчальна програма для роботи з квадратом Полібія та шифром Гронсфельда."
+  >
+  <title>CipherLab | Класичні шифри</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <a href="#" class="logo">Cipher<span>Lab</span></a>
+      <span class="header-label">Лабораторна робота № 2</span>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="intro">
+      <p class="eyebrow">ПРОГРАМНІ ТЕХНОЛОГІЇ ЗАХИСТУ ІНФОРМАЦІЇ</p>
+      <h1>Шифрування тексту</h1>
+      <p class="intro-description">
+        Інструмент для шифрування та розшифрування повідомлень
+        за допомогою квадрата Полібія та шифру Гронсфельда.
+      </p>
+    </section>
+
+    <section class="workspace">
+      <!-- Вибір алгоритму -->
+      <div class="field-group">
+        <label for="algorithm">Алгоритм шифрування</label>
+        <select id="algorithm">
+          <option value="coordinates">Квадрат Полібія: координати</option>
+          <option value="row-shift">Квадрат Полібія: зсув рядків</option>
+          <option value="gronsfeld">Шифр Гронсфельда</option>
+        </select>
+      </div>
+
+      <!-- Вибір мови та операції -->
+      <div class="form-grid">
+        <div class="field-group">
+          <label for="language">Мова алфавіту</label>
+          <select id="language">
+            <option value="uk">Українська</option>
+            <option value="en">Латинська</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="operation">Операція</label>
+          <select id="operation">
+            <option value="encrypt">Шифрування</option>
+            <option value="decrypt">Розшифрування</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Ключ -->
+      <div class="field-group">
+        <label for="key">Ключ шифрування</label>
+        <input
+          id="key"
+          type="text"
+          placeholder="Наприклад, БЕЗПЕКА"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <p id="key-hint" class="field-hint">
+          Введіть ключове слово для побудови квадрата 6 × 6.
+        </p>
+      </div>
+
+      <!-- Вхідний текст -->
+      <div class="field-group">
+        <label for="input-text">Вхідний текст</label>
+        <textarea
+          id="input-text"
+          rows="7"
+          placeholder="Введіть текст або завантажте файл..."
+          spellcheck="false"
+        ></textarea>
+
+        <div class="field-actions">
+          <span class="field-hint">Підтримуються текстові файли UTF-8.</span>
+          <label for="file-input" class="file-label">
+            Завантажити файл
+          </label>
+          <input
+            id="file-input"
+            type="file"
+            accept=".txt,text/plain"
+            hidden
+          >
+        </div>
+      </div>
+
+      <!-- Кнопки дій -->
+      <div class="action-buttons">
+        <button
+          id="process-button"
+          class="button button-primary"
+          type="button"
+        >
+          Зашифрувати
+        </button>
+
+        <button
+          id="clear-button"
+          class="button button-secondary"
+          type="button"
+        >
+          Очистити
+        </button>
+      </div>
+
+      <!-- Повідомлення про результат або помилку -->
+      <div
+        id="message"
+        class="message"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+
+      <!-- Результат -->
+      <div class="field-group result-group">
+        <div class="result-heading">
+          <label for="output-text">Результат</label>
+          <button
+            id="copy-button"
+            class="text-button"
+            type="button"
+          >
+            Копіювати
+          </button>
+        </div>
+
+        <textarea
+          id="output-text"
+          rows="7"
+          placeholder="Тут з'явиться результат..."
+          readonly
+          spellcheck="false"
+        ></textarea>
+
+        <div class="field-actions">
+          <span class="field-hint">Результат можна скопіювати або зберегти.</span>
+          <button
+            id="save-button"
+            class="text-button"
+            type="button"
+          >
+            Завантажити результат
+          </button>
+        </div>
+      </div>
+
+      <!-- Квадрат Полібія -->
+      <section class="square-section">
+        <div class="result-heading">
+          <h2>Ключовий квадрат 6 × 6</h2>
+          <span id="square-caption" class="field-hint">
+            Квадрат для вибраного ключа
+          </span>
+        </div>
+
+        <div id="square-container" aria-live="polite">
+          Введіть ключове слово, щоб побачити квадрат.
+        </div>
+      </section>
+    </section>
+
+    <!-- Опис алгоритмів -->
+    <section class="info-section">
+      <h2>Про алгоритми</h2>
+
+      <div class="algorithm-grid">
+        <article class="algorithm-card">
+          <h3>Координатний квадрат Полібія</h3>
+          <p>
+            Замінює кожен символ парою координат, що визначають
+            номер рядка та стовпця в квадраті 6 × 6.
+          </p>
+        </article>
+
+        <article class="algorithm-card">
+          <h3>Зсув рядків Полібія</h3>
+          <p>
+            Переміщує кожен символ до наступного рядка того самого
+            стовпця з циклічним переходом після останнього рядка.
+          </p>
+        </article>
+
+        <article class="algorithm-card">
+          <h3>Шифр Гронсфельда</h3>
+          <p>
+            Зсуває літери алфавіту на кількість позицій, визначену
+            цифрами числового ключа, що повторюється.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>
+        CipherLab · Навчальний проєкт · Лабораторна робота № 2
+      </p>
+      <p>
+        Класичні шифри призначені для навчання й не забезпечують
+        сучасного криптографічного захисту даних.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+```
